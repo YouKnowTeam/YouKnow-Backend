@@ -1,0 +1,22 @@
+{
+  "name": "youknow-backend",
+  "version": "1.0.0",
+  "description": "YouKnow's backend on server.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YouKnowTeam/YouKnow-Backend.git"
+  },
+  "author": "YouKnowTeam",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/YouKnowTeam/YouKnow-Backend/issues"
+  },
+  "homepage": "https://github.com/YouKnowTeam/YouKnow-Backend#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
