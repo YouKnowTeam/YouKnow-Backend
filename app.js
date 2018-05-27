@@ -1,13 +1,24 @@
+var fs = require('fs');
 var express = require('express');
 var app = express();
+var https = require('https');
 
-app.get('/', function (req, res) {
-  res.send('Hello World!');
+
+
+var loginRouter = require('./routes/login')
+
+app.get('/', function (req, res) {  
+    res.send('Hello World!');
 });
 
-var server = app.listen(3000, function () {
-  var host = server.address().address;
-  var port = server.address().port;
+app.use('/', loginRouter)
 
-  console.log('Example app listening at http://%s:%s', host, port);
-});
+
+var httpsOptions = {
+    key: fs.readFileSync('./encryptions/key.pem'),
+    cert: fs.readFileSync('./encryptions/cert.crt')
+};
+
+var server = https.createServer(httpsOptions, app).listen(3000, function(){
+
+});  
