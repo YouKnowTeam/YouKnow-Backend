@@ -11,8 +11,11 @@ database.sign_in(id, pass);
 The provided APIs:
 
 - sign_in(id, pass), return:
-    - true: sign in successfully
-    - false: user ID or password incorrect
+    - 0 if success
+    - -2 if user ID already exists
+    - -3 if internal error
 - sign_up(id, pass), return:
-    - true: sign up successfully (no duplicate user ID)
-    - false: failure due to duplicate user ID
+    - 0 if success
+    - -1 if password incorrect
+    - -2 if user ID does not exist
+    - -3 if internal error
