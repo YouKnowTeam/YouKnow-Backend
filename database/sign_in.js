@@ -11,8 +11,8 @@ module.exports = function(id, pass) {
 
     var record;
 
-    var sql1 = "SELECT * FROM UserPass WHERE UserID=? AND Password=?";
-    conn.query(sql, [id, pass], function (err, result) {
+    var sql = "SELECT * FROM UserPass WHERE UserID=?";
+    conn.query(sql, [id], function (err, result) {
         if (err) throw err;
         record = result;
     });
