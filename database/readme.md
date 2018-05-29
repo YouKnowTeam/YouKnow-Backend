@@ -19,3 +19,6 @@ The provided APIs:
     - -1 if password incorrect
     - -2 if user ID does not exist
     - -3 if internal error
+
+__Note__:
+1. All the passwords needed when you invoke the APIs are in _PLAINTEXT_. The passwords will be hashed and stored in database, which is encapsulated and intransparent to callers.
