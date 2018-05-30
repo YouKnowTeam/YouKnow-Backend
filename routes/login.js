@@ -5,7 +5,7 @@ var jsonParser = bodyParser.json();
 var jwt = require('jwt-simple');
 var bcrypt = require('bcrypt');
 var secret = 'jwtTokenSecret';
-const database = require('./database')
+const database = require('../database')
 const saltRounds = 10;
 
 // /login?userid=[userid]&passwd=[passwd]
@@ -14,7 +14,7 @@ router.post('/Login', jsonParser, function(req, res){
     
     var userid = req.body.userid;
     var passwd = req.body.passwd;
-    var result=database.sign_up(userid, passwd)
+    var result=database.sign_in(userid, passwd)
     // Retrieve derived password with respect to the userid
     if(result==0){ 
             // Verification succeeded

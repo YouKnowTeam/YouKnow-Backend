@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
 var jsonParser = bodyParser.json();
-const database = require('./database')
+var database = require('../database')
 
 var bcrypt = require('bcrypt');
 const saltRounds = 10;
