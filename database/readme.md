@@ -3,7 +3,7 @@ Import by `require` the folder `./database`.
 For example,
 
 ```js
-const database = require('./database');
+var database = require('../database');
 
 return_code = database.sign_in(id, pass);
 ```
