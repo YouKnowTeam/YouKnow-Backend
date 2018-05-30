@@ -28,7 +28,7 @@ router.post('/Login', jsonParser, function(req, res){
         res.json({
                 "code": 0,
                 "msg": "Succeeded",
-                "token": "asdlkfwlkerjjkl"
+                "token": token
         });
 
     }
