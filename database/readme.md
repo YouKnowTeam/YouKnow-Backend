@@ -5,7 +5,7 @@ For example,
 ```js
 const database = require('./database');
 
-database.sign_in(id, pass);
+return_code = database.sign_in(id, pass);
 ```
 
 The provided APIs:
