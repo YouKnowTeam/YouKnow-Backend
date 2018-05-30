@@ -6,12 +6,15 @@ var https = require('https');
 
 
 var loginRouter = require('./routes/login')
+var signupRouter = require('./routes/signup')
+
 
 app.get('/', function (req, res) {  
     res.send('Hello World!');
 });
 
 app.use('/', loginRouter)
+app.use('/', signupRouter)
 
 
 var httpsOptions = {
