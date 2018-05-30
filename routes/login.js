@@ -5,7 +5,7 @@ var jsonParser = bodyParser.json();
 var jwt = require('jwt-simple');
 var bcrypt = require('bcrypt');
 var secret = 'jwtTokenSecret';
-const database = require('../database')
+var database = require('../database')
 const saltRounds = 10;
 
 // /login?userid=[userid]&passwd=[passwd]
