@@ -4,21 +4,25 @@
  * flag}`, among which `SrcID` is the ID of message source, `SrcDesc`
  * is its description, and `flag` shows if the user has subscribed it.
  */
-module.exports = function(userid) {
+module.exports = function(userid, callback) {
     var conn = require('./db_conn')();
 
     var all_src, user_src;
 
     var sql1 = "SELECT * FROM MsgSrc";
     conn.query(sql1, function (err, result) {
+        /*
         if (err) console.log(err);
         all_src = result;
+        */
     });
 
     var sql2 = "SELECT * FROM UserSrc WHERE UserID=?";
     conn.query(sql2, [userid], function (err, result) {
+        /*
         if (err) console.log(err);
         user_src = result;
+        */
     });
 
     all_src.forEach(elem => {
