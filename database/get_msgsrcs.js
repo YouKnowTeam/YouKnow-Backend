@@ -27,23 +27,18 @@ module.exports = function(userid, callback) {
             user_src = result;
             console.log("all_src:"+all_src+typeof(all_src))
             all_src.forEach(elem => {
-            var flag = 0;
-            for (i = 0; i < user_src.length; i++) {
-                if (user_src[i].SrcID == elem.SrcID) {
-                    flag = 1;
-                    break;
+                var flag = 0;
+                for (i = 0; i < user_src.length; i++) {
+                    if (user_src[i].SrcID == elem.SrcID) {
+                        flag = 1;
+                        break;
+                    }
                 }
-            }
-            elem.flag = flag;
+                elem.flag = flag;
+            });   
             conn.end();
             callback(code, all_src)
-        });       
+            console.log("all_src2:"+all_src+typeof(all_src))
+        });
     });
-});
-
-    
-
-    
-
-    return all_src;
 };
