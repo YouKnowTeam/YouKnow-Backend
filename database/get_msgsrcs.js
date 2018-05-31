@@ -25,6 +25,8 @@ module.exports = function(userid, callback) {
         
     });
 
+    console.log("all_src:"+all_src+typeof(all_src))
+
     all_src.forEach(elem => {
         var flag = 0;
         for (i = 0; i < user_src.length; i++) {
