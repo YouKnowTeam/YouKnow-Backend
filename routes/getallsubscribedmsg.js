@@ -8,6 +8,7 @@ var database = require('../database')
 var bcrypt = require('bcrypt');
 const saltRounds = 10;
 
+var jwt = require('jwt-simple');
 const secret = 'jwtTokenSecret';
 
 
@@ -17,15 +18,15 @@ const secret = 'jwtTokenSecret';
         "passwd": "[passwd]"
     }
 */
-router.post('/GetAllSubscribedMessages', urlParser, function (req, res) {
-    if (!req.body) {
-        return res.sendStatus(400);
-    }
+router.get('/GetAllSubscribedMessages', urlParser, function (req, res) {
 
 
-    var token = req.body.token;
-    var msgid = req.body.msg_id;
-    var num = req.body.num;
+    var token = req.query.token;
+    console.log("Token:"+token+typeof(token))
+    var msgid = req.query.msg_id;
+    console.log("msgid:"+msgid+typeof(msgid))
+    var num = req.query.num;
+    console.log("num:"+num+typeof(num));
 
     var decoded = jwt.decode(token, secret);
 
