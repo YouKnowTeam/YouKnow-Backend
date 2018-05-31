@@ -26,7 +26,10 @@ module.exports = function(id, pass, callback) {
         var result = 0;
         if (record_num > 1) result = -3;
         if (record_num == 1) result = -2;
-        if (result!==0) callback(result);
+        if (result!==0) {
+            callback(result);
+            conn.end();
+        }
 
 
         else{
@@ -36,13 +39,15 @@ module.exports = function(id, pass, callback) {
             conn.query(sql2, [id, hashed_pass], function (err, result) {
                 if (err) console.log(err.message);
                 callback(0);
+                conn.end();
+                
             });
 
         }
     
-        conn.end();
 
-    })
+    });
+}
 
     
 
