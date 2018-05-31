@@ -25,7 +25,7 @@ module.exports = function(userid, msgid, num, callback) {
         }
         conn.end();
         
-        callback(code);
+        callback(code, result);
     });
     
 };
