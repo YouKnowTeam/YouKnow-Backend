@@ -25,10 +25,8 @@ module.exports = function(id, pass, callback) {
         else {
             
             var hash = bcrypt.hashSync(pass, 10);
-            console.log("hash:"+hash+"passwd:"+pass + "stored:"+record[0].Password);
 
             match_res = bcrypt.compareSync(pass, record[0].Password);
-            console.log(match_res)
             if (match_res == false) code = -1;
         }
         conn.end();

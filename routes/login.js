@@ -6,7 +6,7 @@ var jwt = require('jwt-simple');
 var bodyParser = require('body-parser');
 var urlParser = bodyParser.urlencoded({ extended: false });
 
-var secret = 'jwtTokenSecret';
+const secret = 'jwtTokenSecret';
 var database = require('../database')
 
 
