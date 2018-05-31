@@ -14,10 +14,10 @@ module.exports = function(id, pass) {
     var hashed_pass;
 
     var sql1 = "SELECT * FROM UserPass WHERE UserID=?";
-    conn.query(sql, [id], function (err, result) {
+    conn.query(sql1, [id], function (err, result) {
         if (err) throw err;
         record_num = result.length;
-    });
+    );
     
     conn.end();
     
@@ -31,7 +31,7 @@ module.exports = function(id, pass) {
     });
 
     var sql2 = "INSERT INTO UserPass (UserID Password) VALUES (?, ?)";
-    conn.query(sql, [id, hashed_pass], function (err, result) {
+    conn.query(sql2, [id, hashed_pass], function (err, result) {
         if (err) throw err;
     });
 

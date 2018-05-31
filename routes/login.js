@@ -16,10 +16,11 @@ router.post('/Login', jsonParser, function(req, res){
     var passwd = req.body.passwd;
     var result=database.sign_in(userid, passwd)
     // Retrieve derived password with respect to the userid
+
     if(result==0){ 
             // Verification succeeded
-        let expires = Date.now() + 7*24*60*60*1000;
-        let token = jwt.encode({
+        var expires = Date.now() + 7*24*60*60*1000;
+        var token = jwt.encode({
                 iss: userid, // issuer 表明请求的实体
                 exp: expires, // expires token的生命周期
                 aud: 'jser'
