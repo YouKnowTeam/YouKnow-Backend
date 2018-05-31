@@ -39,6 +39,7 @@ router.get('/GetAllSubscribedMessages', urlParser, function (req, res) {
     }
 
     var userid = decoded.iss;
+    console.log("userid:" + userid);
     
 
     function callback(code, data) {
@@ -47,7 +48,7 @@ router.get('/GetAllSubscribedMessages', urlParser, function (req, res) {
                 res.json({
                     "code": 0,
                     "msg": "Succeeded",
-                    "data": JSON.stringify(data)
+                    "data": data
                 });
                 break;
             
