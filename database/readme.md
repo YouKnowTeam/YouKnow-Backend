@@ -19,17 +19,17 @@ The provided APIs:
     - -1 if password incorrect
     - -2 if user ID does not exist
     - -3 if internal error
-- get_subscrs(userid), get the list of subscription sources, return:
-    - An array of objects. The structure of object is `{SubID, SubDescr, flag}` (name of properties), among which `SubID` is the ID of subscription source, `SubDescr` is its description, and `flag` shows if the user has subscribed it. For example, if you would like know the subscription ID of the second entry,
+- get_msgsrcs(userid), get the list of message sources, return:
+    - An array of objects. The structure of object is `{SrcID, SrcDesc, URL, flag}` (name of properties), among which `SrcID` is the ID of message source, `SrcDesc` is its description, URL is its URL link, and `flag` shows if the user has subscribed it. For example, if you would like know the message source ID of the second entry,
 ```js
-var result = get_subscrs(`MyUserID`);
+var result = get_msgsrcs(`MyUserID`);
 
-console.log(result[1].SubID);
+console.log(result[1].SrcID);
 ```
-- add_subscr(userid, subid), add subscription source for user, return:
+- add_msgsrc(userid, srcid), add message source for user, return:
     - 0: if success
     - -3: if internal error
-- rm_subscr(userid, subid), remove subscription source for user, return:
+- rm_msgsrc(userid, srcid), remove message source for user, return:
     - 0: if success
     - -3: if internal error
 
