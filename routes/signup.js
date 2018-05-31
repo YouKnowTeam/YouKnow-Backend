@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
 var jsonParser = bodyParser.json();
+var urlParser = bodyParser.urlencoded();
 var database = require('../database')
 
 var bcrypt = require('bcrypt');
@@ -14,7 +15,7 @@ const saltRounds = 10;
         "passwd": "[passwd]"
     }
 */
-router.post('/SignUp', jsonParser, function(req, res){
+router.post('/SignUp', urlParser, function(req, res){
     if(!req.body) {
         return res.sendStatus(400);
     }

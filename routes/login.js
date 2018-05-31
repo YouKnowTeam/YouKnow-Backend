@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
 var jsonParser = bodyParser.json();
+var urlParser = bodyParser.urlencoded();
 var jwt = require('jwt-simple');
 
 var secret = 'jwtTokenSecret';
@@ -9,7 +10,7 @@ var database = require('../database')
 
 
 // /login?userid=[userid]&passwd=[passwd]
-router.post('/Login', jsonParser, function(req, res){
+router.post('/Login', urlParser, function(req, res){
     if(!req.body) return res.sendStatus(400);
     
     var userid = req.body.userid;
