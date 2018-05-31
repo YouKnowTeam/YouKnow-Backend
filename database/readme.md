@@ -69,6 +69,6 @@ CREATE TABLE UserSrc (UserID varchar(32), SrcID varchar(32), PRIMARY KEY(UserID,
 CREATE TABLE Msg (MsgID int AUTO_INCREMENT, SrcID varchar(32) NOT NULL, Brief varchar(255), Detail mediumtext, PRIMARY KEY (MsgID), FOREIGN KEY (SrcID) REFERENCES MsgSrc(SrcID));
 ```
 
-|MsgID       |SrcID       |Brief       |Detail    |
-|------------|------------|------------|----------|
-|varchar(32) |varchar(32) |varchar(255)|mediumtext|
+|MsgID       |SrcID       |Brief       |Detail    |Timestamp|
+|------------|------------|------------|----------|---------|
+|varchar(32) |varchar(32) |varchar(255)|mediumtext|timestamp|
