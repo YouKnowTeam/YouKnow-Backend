@@ -53,7 +53,7 @@ CREATE TABLE MsgSrc (SrcID varchar(32), SrcDesc varchar(256), URL varchar(256), 
 
 |SrcID       |SrcDesc     |URL         |
 |------------|------------|------------|
-|varchar(32) |varchar(256)|varchar(256)|
+|varchar(32) |varchar(255)|varchar(255)|
 
 - UserSrc
 ```sql
@@ -63,3 +63,12 @@ CREATE TABLE UserSrc (UserID varchar(32), SrcID varchar(32), PRIMARY KEY(UserID,
 |UserID      |SrcID       |
 |------------|------------|
 |varchar(32) |varchar(32) |
+
+- Msg
+```sql
+CREATE TABLE Msg (MsgID int AUTO_INCREMENT, SrcID varchar(32) NOT NULL, Brief varchar(255), Detail mediumtext, PRIMARY KEY (MsgID), FOREIGN KEY (SrcID) REFERENCES MsgSrc(SrcID));
+```
+
+|MsgID       |SrcID       |Brief       |Detail    |
+|------------|------------|------------|----------|
+|varchar(32) |varchar(32) |varchar(255)|mediumtext|
