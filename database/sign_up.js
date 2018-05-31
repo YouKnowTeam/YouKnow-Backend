@@ -5,35 +5,57 @@
  * - -2 if user ID already exists
  * - -3 if internal error
  */
-module.exports = function(id, pass) {
-    const argon2 = require('argon2');
+
+
+var bcrypt = require('bcrypt');
+const saltRounds = 10;
+
+
+module.exports = function(id, pass, callback) {
+
 
     var conn = require('./db_conn')();
 
     var record_num = 0;
     var hashed_pass;
 
-    var sql1 = "SELECT * FROM UserPass WHERE UserID=?";
+    var sql1 = "SELECT * FROM UserPass WHERE UserID=? ;";
     conn.query(sql1, [id], function (err, result) {
-        if (err) throw err;
+        if (err) console.log(err.message);
         record_num = result.length;
-    });
-    
-    conn.end();
-    
-    if (record_num > 1) return -3;
-    if (record_num == 1) return -2;
-    
-    argon2.hash('pass').then(hash => {
-        hashed_pass = hash;
-    }).catch(err => {
-        throw err;
-    });
+        var code = 0;
+        if (record_num > 1) code = -3;
+        if (record_num == 1) code = -2;
+        if (code!==0) {
+            callback(code);
+            conn.end();
+        }
 
-    var sql2 = "INSERT INTO UserPass (UserID Password) VALUES (?, ?)";
-    conn.query(sql2, [id, hashed_pass], function (err, result) {
-        if (err) throw err;
-    });
 
-    return 0;
-};
+        else{
+            hashed_pass = bcrypt.hashSync(pass, saltRounds);
+
+            var sql2 = "INSERT INTO UserPass (UserID, Password) VALUES (?, ?) ;";
+            conn.query(sql2, [id, hashed_pass], function (err, result) {
+                if (err) console.log(err.message);
+                callback(0);
+                conn.end();
+                
+            });
+
+        }
+    
+
+    });
+}
+
+    
+
+        
+
+    
+    
+
+    
+  
+ 

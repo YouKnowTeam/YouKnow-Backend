@@ -6,8 +6,9 @@
  * - -2 if user ID does not exist
  * - -3 if internal error
  */
-module.exports = function(id, pass) {
-    const argon2 = require('argon2');
+var bcrypt = require('bcrypt');
+
+module.exports = function(id, pass, callback) {
     
     var conn = require('./db_conn')();
 
@@ -15,26 +16,23 @@ module.exports = function(id, pass) {
 
     var sql = "SELECT * FROM UserPass WHERE UserID=?";
     conn.query(sql, [id], function (err, result) {
-        if (err) throw err;
+        if (err) console.log(err.message);
+
         record = result;
-    });
-    
-    conn.end();
-    
-    if (record.length == 0) return -2;
-    if (record.length > 1) return -3;
-    
-    argon2.verify(record[0].Password, pass).then(match => {
-        if (match) {
-            match_res = true;
-        } else {
-            match_res = false;
+        var code = 0;
+        if (record.length == 0) code = -2;
+        else if (record.length > 1) code = -3;
+        else {
+            
+            var hash = bcrypt.hashSync(pass, 10);
+            console.log("hash:"+hash+"passwd:"+pass + "stored:"+record[0].Password);
+
+            match_res = bcrypt.compareSync(pass, record[0].Password);
+            console.log(match_res)
+            if (match_res == false) code = -1;
         }
-    }).catch(err => {
-        throw err;
+        conn.end();
+        callback(code);
     });
     
-    if (match_res == false) return -1;
-    
-    return 0;
 };
