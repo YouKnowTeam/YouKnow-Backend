@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
-var jsonParser = bodyParser.json();
+var urlParser = bodyParser.urlencoded({ extended: false });
 var jwt = require('jwt-simple');
 var bcrypt = require('bcrypt');
 var secret = 'jwtTokenSecret';
