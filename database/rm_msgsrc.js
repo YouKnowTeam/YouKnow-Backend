@@ -10,7 +10,7 @@ module.exports = function(userid, srcid) {
     var return_code = 0;
 
     var sql = "DELETE FROM UserSrc WHERE UserID=? AND SrcID=?";
-    conn.query(sql, [userid srcid], function (err, result) {
+    conn.query(sql, [userid, srcid], function (err, result) {
         if (err) {
             console.log(err);
             return_code = -3;

@@ -9,8 +9,8 @@ module.exports = function(userid, srcid) {
 
     var return_code = 0;
 
-    var sql = "INSERT INTO UserSrc (UserID SrcID) VALUES (?, ?)";
-    conn.query(sql, [userid srcid], function (err, result) {
+    var sql = "INSERT INTO UserSrc (UserID, SrcID) VALUES (?, ?)";
+    conn.query(sql, [userid, srcid], function (err, result) {
         if (err) {
             console.log(err);
             return_code = -3;
