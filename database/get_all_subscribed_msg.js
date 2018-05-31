@@ -14,7 +14,7 @@ module.exports = function(userid, msgid, num, callback) {
 
     var record, match_res;
 
-    var sql1 = "SELECT * FROM Msg WHERE SrcID in (SELECT SrcID FROM UserSRC WHERE UserID=? ) AND MsgID<=?  ORDER BY MsgID DESC limit ?";
+    var sql1 = "SELECT * FROM Msg WHERE SrcID in (SELECT SrcID FROM UserSrc WHERE UserID=? ) AND MsgID<=?  ORDER BY MsgID DESC limit ?";
     
 
     conn.query(sql1, [userid, parseInt(msgid), parseInt(num)], function (err, result) {
