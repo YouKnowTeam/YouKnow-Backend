@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
-var jsonParser = bodyParser.json();
-var urlParser = bodyParser.urlencoded(false);
+var urlParser = bodyParser.urlencoded({ extended: false });
+
 var database = require('../database')
 
 var bcrypt = require('bcrypt');

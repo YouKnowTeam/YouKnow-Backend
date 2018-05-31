@@ -23,7 +23,12 @@ module.exports = function(id, pass, callback) {
         if (record.length == 0) code = -2;
         else if (record.length > 1) code = -3;
         else {
-            match_res = bcrypt.compareSync(record[0].Password, pass);
+            
+            var hash = bcrypt.hashSync(pass, 10);
+            console.log("hash:"+hash+"passwd:"+pass + "stored:"+record[0].Password);
+
+            match_res = bcrypt.compareSync(pass, record[0].Password);
+            console.log(match_res)
             if (match_res == false) code = -1;
         }
         conn.end();

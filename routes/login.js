@@ -1,9 +1,10 @@
+
 var express = require('express');
 var router = express.Router();
-var bodyParser = require('body-parser');
-var jsonParser = bodyParser.json();
-var urlParser = bodyParser.urlencoded(false);
 var jwt = require('jwt-simple');
+
+var bodyParser = require('body-parser');
+var urlParser = bodyParser.urlencoded({ extended: false });
 
 var secret = 'jwtTokenSecret';
 var database = require('../database')
@@ -32,7 +33,7 @@ router.post('/Login', urlParser, function (req, res) {
                 res.json({
                     "code": 0,
                     "msg": "Succeeded",
-                    "token": token``
+                    "token": token
                 });
                 break;
 
