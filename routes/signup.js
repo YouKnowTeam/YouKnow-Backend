@@ -15,30 +15,37 @@ const saltRounds = 10;
     }
 */
 router.post('/SignUp', jsonParser, function(req, res){
-    if(!req.body) return res.sendStatus(400);
+    if(!req.body) {
+        return res.sendStatus(400);
+    }
+   
 
     var userid = req.body.userid;
     var passwd = req.body.passwd;
+
+
     var result=database.sign_up(userid, passwd)
-    if (result==true){
+    switch(result){
+        case 0:
             res.json({
                 "code": 0,
                 "msg": "Succeeded"
             });
-        }
-        else if (result==0){
+        
+        break;
+        case -2:
             res.json({
                 "code": -2,
                 "msg": "This userid has been used"
             });
-        }
-        else{
+        break;
+        case -3:
             res.json({
                 "code": -3,
                 "msg": "Error"
             });
-        } 
-    
+        break;
+        }
 });
 
 
