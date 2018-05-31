@@ -23,11 +23,11 @@ module.exports = function(id, pass, callback) {
     conn.query(sql1, [id], function (err, result) {
         if (err) console.log(err.message);
         record_num = result.length;
-        var result = 0;
-        if (record_num > 1) result = -3;
-        if (record_num == 1) result = -2;
-        if (result!==0) {
-            callback(result);
+        var code = 0;
+        if (record_num > 1) code = -3;
+        if (record_num == 1) code = -2;
+        if (code!==0) {
+            callback(code);
             conn.end();
         }
 

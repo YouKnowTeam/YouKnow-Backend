@@ -1,6 +1,7 @@
 var fs = require('fs');
 var express = require('express');
 var app = express();
+var http = require('http');
 var https = require('https');
 
 
@@ -24,4 +25,9 @@ var httpsOptions = {
 
 var server = https.createServer(httpsOptions, app).listen(3000, function(){
 
+
 });  
+
+var serverHTTP = http.createServer(app).listen(4000, function(){
+
+});

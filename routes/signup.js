@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
 var jsonParser = bodyParser.json();
-var urlParser = bodyParser.urlencoded();
 var database = require('../database')
 
 var bcrypt = require('bcrypt');
@@ -26,8 +25,8 @@ router.post('/SignUp', jsonParser, function (req, res) {
 
 
    
-    function callback(result) {
-        switch (result) {
+    function callback(code) {
+        switch (code) {
             case 0:
                 res.json({
                     "code": 0,
