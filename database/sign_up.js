@@ -11,7 +11,7 @@ var bcrypt = require('bcrypt');
 const saltRounds = 10;
 
 
-module.exports = function(id, pass) {
+module.exports = function(id, pass, callback) {
 
 
     var conn = require('./db_conn')();
@@ -22,21 +22,35 @@ module.exports = function(id, pass) {
     var sql1 = "SELECT * FROM UserPass WHERE UserID=? ;";
     conn.query(sql1, [id], function (err, result) {
         if (err) console.log(err.message);
-        record_num = result.length
-    });
+        record_num = result.length;
+        var result = 0;
+        if (record_num > 1) result = -3;
+        if (record_num == 1) result = -2;
+        if (result!==0) callback(result);
+
+
+        else{
+            hashed_pass = bcrypt.hashSync(pass, saltRounds);
+
+            var sql2 = "INSERT INTO UserPass (UserID, Password) VALUES (?, ?) ;";
+            conn.query(sql2, [id, hashed_pass], function (err, result) {
+                if (err) console.log(err.message);
+                callback(0);
+            });
+
+        }
+    
+        conn.end();
+
+    })
+
+    
+
+        
+
     
     
-    if (record_num > 1) return -3;
-    if (record_num == 1) return -2;
+
     
   
-    hashed_pass = bcrypt.hashSync(pass, saltRounds);
-
-    var sql2 = "INSERT INTO UserPass (UserID, Password) VALUES (?, ?) ;";
-    conn.query(sql2, [id, hashed_pass], function (err, result) {
-        if (err) console.log(err.message);
-    });
-
-    conn.end();
-    return 0;
-};
+ 

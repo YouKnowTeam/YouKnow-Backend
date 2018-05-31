@@ -10,7 +10,7 @@ var database = require('../database')
 
 
 // /login?userid=[userid]&passwd=[passwd]
-router.post('/Login', urlParser, function(req, res){
+router.post('/Login', jsonParser, function(req, res){
     if(!req.body) return res.sendStatus(400);
     
     var userid = req.body.userid;
