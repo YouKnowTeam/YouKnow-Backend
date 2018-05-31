@@ -38,18 +38,28 @@ __Note__:
 2. The structure of database tables:
 - UserPass
 
+```sql
+CREATE TABLE UserPass ( UserID varchar(32), Password char(60), PRIMARY KEY(UserID));
+```
+
 |UserID       |Password|
 |-------------|--------|
 |varchar(32)  |char(60)|
 
-- Subscr
+- MsgSrc
+```sql
+CREATE TABLE MsgSrc (SrcID varchar(32), SrcDesc varchar(256), URL varchar(256), PRIMARY KEY(SrcID));
+```
 
-|SubID       |SubDescr    |
-|------------|------------|
-|varchar(32) |varchar(256)|
+|SrcID       |SrcDesc     |URL         |
+|------------|------------|------------|
+|varchar(32) |varchar(256)|varchar(256)|
 
-- UserSub
+- UserSrc
+```sql
+CREATE TABLE UserSrc (UserID varchar(32), SrcID varchar(32), PRIMARY KEY(UserID, SrcID), FOREIGN KEY (UserID) REFERENCES UserPass(UserID), FOREIGN KEY (SrcID) REFERENCES MsgSrc(SrcID));
+```
 
-|UserID      |SubID       |
+|UserID      |SrcID       |
 |------------|------------|
 |varchar(32) |varchar(32) |
