@@ -4,13 +4,12 @@ var app = express();
 var http = require('http');
 var https = require('https');
 
-
-
 var loginRouter = require('./routes/login');
 var signupRouter = require('./routes/signup');
 var getallsubscribedmsgRouter = require('./routes/getallsubscribedmsg');
 var getallMsgSrcRouter = require('./routes/getallmsgsrc');
-
+var subcribeMsgSrcRouter = require('./routes/addmsgsrc');
+var unsubcribeMsgSrcRouter = require('./routes/rmmsgsrc');
 
 app.get('/', function (req, res) {  
     res.send('Hello World!');
@@ -20,6 +19,8 @@ app.use('/', loginRouter);
 app.use('/', signupRouter);
 app.use('/', getallsubscribedmsgRouter);
 app.use('/', getallMsgSrcRouter);
+app.use('/', subcribeMsgSrcRouter);
+app.use('/', unsubcribeMsgSrcRouter);
 
 
 var httpsOptions = {

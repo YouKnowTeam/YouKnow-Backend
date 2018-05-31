@@ -8,18 +8,14 @@ module.exports = function(userid, srcid, callback) {
     var conn = require('./db_conn')();
 
     var return_code = 0;
-
     var sql = "DELETE FROM UserSrc WHERE UserID=? AND SrcID=?";
     conn.query(sql, [userid, srcid], function (err, result) {
-        /*
         if (err) {
             console.log(err);
             return_code = -3;
         }
-        */
+        conn.end();
+        callback(return_code) 
     });
 
-    conn.end();
-
-    return return_code;
 };
