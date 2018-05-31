@@ -17,7 +17,7 @@ module.exports = function(id, pass) {
     conn.query(sql1, [id], function (err, result) {
         if (err) throw err;
         record_num = result.length;
-    );
+    });
     
     conn.end();
     
