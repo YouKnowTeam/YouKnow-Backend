@@ -12,7 +12,7 @@ router.post('/UnsubscribeMessageSource', urlParser, function (req, res) {
 
     var token = req.body.token;
     var srcid= req.body.source_id
-    console.log("srcid:" + srcid);
+    console.log("srcid:" + srcid);++
     console.log("Token:"+token+typeof(token));
     // Retrieve derived password with respect to the userid
     
@@ -44,7 +44,7 @@ router.post('/UnsubscribeMessageSource', urlParser, function (req, res) {
 
         }
     }
-    database.rm_msgscr(userid, srcid, callback);
+    database.rm_msgsrc(userid, srcid, callback);
 });
 
 module.exports = router;

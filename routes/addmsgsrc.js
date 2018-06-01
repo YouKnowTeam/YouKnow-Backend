@@ -47,7 +47,7 @@ router.post('/SubscribeMessageSource', urlParser, function (req, res) {
 
         }
     }
-    database.add_msgscr(userid, srcid, callback);
+    database.add_msgsrc(userid, srcid, callback);
 });
 
 
