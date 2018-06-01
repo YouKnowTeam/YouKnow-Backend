@@ -11,8 +11,10 @@ router.post('/SubscribeMessageSource', urlParser, function (req, res) {
     if (!req.body) return res.sendStatus(400);
 
     var token = req.body.token;
-    var srcid= req.body.source_id
+    var srcid= req.body.source_id;
+    console.log("srcid:" + srcid);
     console.log("Token:"+token+typeof(token));
+
     // Retrieve derived password with respect to the userid
     
     var decoded = jwt.decode(token, secret);
