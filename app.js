@@ -21,6 +21,7 @@ app.use('/', getallsubscribedmsgRouter);
 app.use('/', getallMsgSrcRouter);
 app.use('/', subcribeMsgSrcRouter);
 app.use('/', unsubcribeMsgSrcRouter);
+app.use('/', getMessageDetails);
 
 
 var httpsOptions = {
