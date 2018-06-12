@@ -1,18 +1,22 @@
 /*
- * Input: UserID, Timestamp, Number of Messages
+ * Input: UserID, MsgID, Number of Messages
  * Output: Array of unread messages
  */
 var bcrypt = require('bcrypt');
 
-module.exports = function (userid, timestamp, num, callback) {
+module.exports = function (msgid, callback) {
 
     var conn = require('./db_conn')();
 
     var sql;
+    
+    if (parseInt(msgid) < 0) {
+        sql = "SELECT MsgID, SrcID, Brief, Detail, Timestamp FROM Msg WHERE (MsgID >= ?) ORDER BY MsgID DESC LIMIT 1";
+    } else {
+        sql = "SELECT MsgID, SrcID, Brief, Detail, Timestamp FROM Msg WHERE (MsgID >= ?) ORDER BY MsgID DESC";
+    }
 
-    sql = "SELECT MsgID, SrcID, Brief, Detail, Timestamp FROM Msg WHERE (SrcID in (SELECT SrcID FROM UserSrc WHERE UserID=? )) AND (Timestamp >= ?) ORDER BY MsgID DESC limit ?"; 
-
-    conn.query(sql, [userid, timestamp, parseInt(num)], function (err, result) {
+    conn.query(sql, [parseInt(msgid)], function (err, result) {
         var code = 0;
         if (err) {
             console.log(err.message);
