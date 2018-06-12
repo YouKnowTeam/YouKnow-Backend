@@ -4,7 +4,7 @@
  */
 var bcrypt = require('bcrypt');
 
-module.exports = function (srcid, callback) {
+module.exports = function (srcid, callback, msg) {
 
     var conn = require('./db_conn')();
 
@@ -21,7 +21,7 @@ module.exports = function (srcid, callback) {
         }
         conn.end();
 
-        callback(code, result);
+        callback(code, result, msg);
     });
 
 };
