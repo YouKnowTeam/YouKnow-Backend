@@ -1,4 +1,4 @@
-var JPush = require("jpush-async")
+var JPush = require("../node_modules/jpush-async/lib/JPush/JPushAsync.js")
 var database = require('../database')
 
 /*var client = JPush.buildClient('your appKey', 'your masterSecret')*/
