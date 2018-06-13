@@ -1,4 +1,4 @@
-var JPush = require("jpush-async")
+var JPush = require("../lib/JPush/JPushAsync.js")
 var database = require('../database')
 
 /*var client = JPush.buildClient('your appKey', 'your masterSecret')*/
@@ -16,7 +16,7 @@ function pushCallBack(code,data,msg){
     else{
         newestMsg=data[0].MsgID;
         data.forEach(elem => {
-            
+    
             client.push().setPlatform(null,'ios')
                   .setAudience(null,JPush.alias(elem.UserID))
                   .setNotification('New Message', null, JPush.android(msg.Brief, msg.SrcID, 1,msg))
