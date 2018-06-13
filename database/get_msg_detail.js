@@ -6,7 +6,7 @@ module.exports = function (userid, msgid, callback) {
 
     var sql;
 
-    sql = "SELECT MsgID, SrcID, Detail, Timestamp FROM Msg WHERE SrcID=?"; 
+    sql = "SELECT MsgID, SrcID, Detail, Timestamp FROM Msg WHERE MsgID=?"; 
 
     conn.query(sql, [msgid], function (err, result) {
         var code = 0;

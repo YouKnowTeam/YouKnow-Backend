@@ -48,7 +48,7 @@ router.get('/GetMessageDetail', urlParser, function (req, res) {
 
             case -2:
                 res.json({
-                    "code": 0,
+                    "code": -2,
                     "msg": "This message does not exist",
                     "data": []
                 });
