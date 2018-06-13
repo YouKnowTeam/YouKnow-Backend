@@ -16,7 +16,8 @@ function pushCallBack(code,data,msg){
     else{
         newestMsg=data[0].MsgID;
         data.forEach(elem => {
-    
+            console.log("urs"+elem.UserID)
+            console.log("msg"+msg)
             client.push().setPlatform(null,'ios')
                   .setAudience(null,JPush.alias(elem.UserID))
                   .setNotification('New Message', null, JPush.android(msg.Brief, msg.SrcID, 1,msg))
