@@ -10,7 +10,8 @@ module.exports = function (userid, msgid, callback) {
 
     conn.query(sql, [msgid], function (err, result) {
         var code = 0;
-
+        console.log("result:" + result);
+        console.log("len:" + result.length);
         if (err ) {
             console.log(err.message);
             code = -3;
