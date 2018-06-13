@@ -53,7 +53,7 @@ function  checkNewMsg(Interval){
     console.log("In");
     database.get_new_msg(newestMsg,callback);
 }
-var myInterval=setInterval(checkNewMsg,60 * 60 * 1000);
+var myInterval=setInterval(checkNewMsg,30 * 1000);
 /*function  stopInterval(){
     clearTimeout(myInterval);
  //myInterval.unref();
