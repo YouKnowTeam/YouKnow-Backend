@@ -50,6 +50,7 @@ function callback(code, data) {
 }
 
 function  checkNewMsg(Interval){
+    console.log("In");
     database.get_new_msg(newestMsg,callback);
 }
 var myInterval=setInterval(checkNewMsg,60 * 60 * 1000);

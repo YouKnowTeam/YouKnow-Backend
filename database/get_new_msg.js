@@ -23,7 +23,7 @@ module.exports = function (msgid, callback) {
             code = -3;
         }
         conn.end();
-
+        console.log("msg"+result);
         callback(code, result);
     });
 

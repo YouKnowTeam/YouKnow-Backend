@@ -20,7 +20,7 @@ module.exports = function (srcid, callback, msg) {
             code = -3;
         }
         conn.end();
-
+        console.log("usr"+result);
         callback(code, result, msg);
     });
 
