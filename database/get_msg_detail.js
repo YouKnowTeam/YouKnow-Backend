@@ -16,12 +16,12 @@ module.exports = function (userid, msgid, callback) {
             code = -3;
         }
 
-        if (len(result)>1 ) {
+        if (result.length>1 ) {
             console.log('more than one msg');
             code = -3;
         }
 
-        if(len(result)==0){
+        if(result.length==0){
             console.log('no such msg');
             code = -2;
         }
@@ -29,10 +29,5 @@ module.exports = function (userid, msgid, callback) {
 
         callback(code, result);
     });
-
-
-    
-
-    
 
 };
