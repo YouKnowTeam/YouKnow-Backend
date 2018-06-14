@@ -14,12 +14,23 @@ function pushCallBack(code,data,msg){
         console.log("No Subscribe Usr");
     }
     else{
+      /*client.push().setPlatform('ios', 'android')
+    .setAudience(JPush.tag('555', '666'), JPush.alias('666,777'))
+    .setNotification('Hi, JPush', JPush.ios('ios alert'), JPush.android('android alert', null, 1))
+    .setMessage('msg content')
+    .setOptions(null, 60)
+    .send()
+    .then(function(result) {
+        console.log(result)
+    }).catch(function(err) {
+        console.log(err)
+    });*/
         newestMsg=data[0].MsgID;
         data.forEach(elem => {
             console.log("urs"+elem.UserID)
             console.log("msg"+msg)
-            client.push().setPlatform(null,'android')
-                  .setAudience(null,JPush.alias(elem.UserID))
+            client.push().setPlatform('android')
+                  .setAudience(JPush.alias(elem.UserID))
                   .setNotification('New Message', null, JPush.android(msg.Brief, msg.SrcID, 1,msg))
                   .setOptions(null, 60)
                   .send()
