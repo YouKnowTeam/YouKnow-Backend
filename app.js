@@ -10,6 +10,7 @@ var getallsubscribedmsgRouter = require('./routes/getallsubscribedmsg');
 var getallMsgSrcRouter = require('./routes/getallmsgsrc');
 var subcribeMsgSrcRouter = require('./routes/addmsgsrc');
 var unsubcribeMsgSrcRouter = require('./routes/rmmsgsrc');
+var getMessageDetails = require('./routes/getMessageDetails')
 
 app.get('/', function (req, res) {  
     res.send('Hello World!');
