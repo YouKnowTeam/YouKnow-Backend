@@ -24,7 +24,7 @@ module.exports = function (msgid, callback) {
             code = -3;
         }
         conn.end();
-        console.log("msg"+result);
+        console.log("msg"+result+result.length);
         callback(code, result);
     });
 

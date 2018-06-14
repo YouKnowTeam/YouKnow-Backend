@@ -44,6 +44,7 @@ function pushCallBack(code,data,msg){
 }
 
 function callback(code, data) {
+    console.log(data.length);
     if(code==-3){
         console.log("error");
     }
