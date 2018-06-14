@@ -5,6 +5,7 @@
 var bcrypt = require('bcrypt');
 
 module.exports = function (msgid, callback) {
+    console.log("msgid"+msgid);
 
     var conn = require('./db_conn')();
 
