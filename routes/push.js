@@ -25,7 +25,7 @@ function pushCallBack(code,data,msg){
     }).catch(function(err) {
         console.log(err)
     });*/
-        
+
         data.forEach(elem => {
             console.log("urs"+elem.UserID)
             console.log("msg"+msg)
@@ -62,6 +62,7 @@ function callback(code, data) {
 
 function  checkNewMsg(Interval){
     console.log("In");
+    console.log("!!!"+newestMsg);
     database.get_new_msg(newestMsg,callback);
 }
 var myInterval=setInterval(checkNewMsg,5 * 1000);
