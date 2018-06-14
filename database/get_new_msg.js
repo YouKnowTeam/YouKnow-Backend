@@ -12,9 +12,9 @@ module.exports = function (msgid, callback) {
     var sql;
     
     if (parseInt(msgid) < 0) {
-        sql = "SELECT MsgID, SrcID, Brief, Detail, Timestamp FROM Msg WHERE (MsgID >= ?) ORDER BY MsgID DESC LIMIT 1";
+        sql = "SELECT MsgID, SrcID, Brief, Detail, Timestamp FROM Msg WHERE (MsgID > ?) ORDER BY MsgID DESC LIMIT 1";
     } else {
-        sql = "SELECT MsgID, SrcID, Brief, Detail, Timestamp FROM Msg WHERE (MsgID >= ?) ORDER BY MsgID DESC";
+        sql = "SELECT MsgID, SrcID, Brief, Detail, Timestamp FROM Msg WHERE (MsgID > ?) ORDER BY MsgID DESC";
     }
 
     conn.query(sql, [parseInt(msgid)], function (err, result) {
