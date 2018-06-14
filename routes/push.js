@@ -26,6 +26,7 @@ function pushCallBack(code,data,msg){
         console.log(err)
     });*/
         newestMsg=data[0].MsgID;
+        console.log("newID:"+newestMsg)
         data.forEach(elem => {
             console.log("urs"+elem.UserID)
             console.log("msg"+msg)
