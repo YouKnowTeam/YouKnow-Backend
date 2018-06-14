@@ -2,7 +2,7 @@ var JPush = require("../node_modules/jpush-async/lib/JPush/JPushAsync.js")
 var database = require('../database')
 
 /*var client = JPush.buildClient('your appKey', 'your masterSecret')*/
-var client = JPush.buildClient('5013c7344b787a461276da92', 'bd4aef85608b5791c8574359');
+var client = JPush.buildClient('1dbf62a1932e3d3c5350f7e6', 'ddf9f7bc9b3c5917884ba1e3');
 
 var newestMsg=-1;
 
