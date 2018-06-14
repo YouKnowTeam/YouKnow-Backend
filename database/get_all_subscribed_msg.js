@@ -32,7 +32,7 @@ module.exports = function (userid, msgid, num, callback) {
     }
 
     else {
-        sql = "SELECT MsgID, SrcID, Brief, Timestamp FROM Msg WHERE SrcID in (SELECT SrcID FROM UserSrc WHERE UserID=? ) AND MsgID<=?  ORDER BY MsgID DESC limit ?";
+        sql = "SELECT MsgID, SrcID, Brief, Timestamp FROM Msg WHERE SrcID in (SELECT SrcID FROM UserSrc WHERE UserID=? ) AND MsgID<?  ORDER BY MsgID DESC limit ?";
 
 
         conn.query(sql, [userid, parseInt(msgid), parseInt(num)], function (err, result) {
