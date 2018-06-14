@@ -4,7 +4,7 @@ var client = JPush.buildClient('5013c7344b787a461276da92', 'bd4aef85608b5791c857
 //easy push
 client.push().setPlatform(JPush.ALL)
     .setAudience(JPush.ALL)
-    .setNotification('Hi, JPush', null, JPush.ios('ios alert', 'happy', 5))
+    .setNotification('Hi, JPush', null, JPush.android('ios alert', 'happy', 5))
     .send()
     .then(function(result) {
         console.log(result)
